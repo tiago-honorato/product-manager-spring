@@ -1,26 +1,34 @@
 package br.com.myproducts.productmanager.model;
 
-import java.util.Date;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+//marca uma classe como uma entidade persistente e pode ser armazenado no banco de dados.
+@Entity
 public class Product {
 
-	//product infos
+	//informa o identificador
+	@Id
+	private Long id;
 	private String nome;
-	private Date data_registro;
 	private int preco;
 	private int quantidade;
 	
 	//constructors
 	public Product() {}
-	public Product(String nome, int preco, Date data_registro, int quantidade) {
-		super();
+	public Product(String nome, int preco, int quantidade) {
 		this.nome = nome;
 		this.preco = preco;
-		this.data_registro = data_registro;
 		this.quantidade = quantidade;
 	}
 	
 	//getters and setters methods
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -32,12 +40,6 @@ public class Product {
 	}
 	public void setPreco(int preco) {
 		this.preco = preco;
-	}
-	public Date getData_registro() {
-		return data_registro;
-	}
-	public void setData_registro(Date data_registro) {
-		this.data_registro = data_registro;
 	}
 	public int getQuantidade() {
 		return quantidade;
