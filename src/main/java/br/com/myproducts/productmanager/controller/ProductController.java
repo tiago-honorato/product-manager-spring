@@ -1,10 +1,14 @@
 package br.com.myproducts.productmanager.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +38,27 @@ public class ProductController {
 		
 		//faz a adição do produto no banco de dados
 		produtoRepositorio.save(produto);
+		
+	}
+	
+	@PutMapping//define como uma requisição http put(modifica dados já existente)
+	public void alterarProduto(@RequestBody Product produto) {
+		
+		produtoRepositorio.save(produto);
+		
+	}
+	
+	@DeleteMapping("/id")//define como uma requisição http delete(deleta dados)
+	public void deletarProduto(@PathVariable Long id) {
+		
+		produtoRepositorio.deleteById(id);
+		
+	}
+	
+	@GetMapping("/id")//obter produto pelo id
+	public Optional<Product> obterProduto(@PathVariable Long id) {
+		
+		return produtoRepositorio.findById(id);
 		
 	}
 	
