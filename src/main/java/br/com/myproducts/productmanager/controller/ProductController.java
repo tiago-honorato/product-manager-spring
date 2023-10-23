@@ -29,6 +29,7 @@ public class ProductController {
 	@GetMapping//define como requisição http get(só retorna informações)
 	public List<Product> getProdutos() {
 		
+		//método do jpa para puxar todos os registros do DB.
 		return produtoRepositorio.findAll();
 		
 	}
@@ -44,20 +45,23 @@ public class ProductController {
 	@PutMapping//define como uma requisição http put(modifica dados já existente)
 	public void alterarProduto(@RequestBody Product produto) {
 		
+		//método do jpa para adicionar registros no DB.
 		produtoRepositorio.save(produto);
 		
 	}
 	
-	@DeleteMapping("/id")//define como uma requisição http delete(deleta dados)
+	@DeleteMapping("/{id}")//define como uma requisição http delete(deleta dados)
 	public void deletarProduto(@PathVariable Long id) {
 		
+		//método do jpa para fazer exclusões no DB pelo id.
 		produtoRepositorio.deleteById(id);
 		
 	}
 	
-	@GetMapping("/id")//obter produto pelo id
+	@GetMapping("/{id}")//obter produto pelo id(as chaves tornam o valor uma variável pra poder ser usada no método)
 	public Optional<Product> obterProduto(@PathVariable Long id) {
 		
+		//método do jpa para fazer buscas no DB pelo id.
 		return produtoRepositorio.findById(id);
 		
 	}

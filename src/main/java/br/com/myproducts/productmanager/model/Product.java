@@ -3,7 +3,7 @@ package br.com.myproducts.productmanager.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
-//marca uma classe como uma entidade persistente e pode ser armazenado no banco de dados.
+//marca uma classe como uma entidade persistente e pode ser armazenado no banco de dados.(JPA)
 @Entity
 public class Product {
 
